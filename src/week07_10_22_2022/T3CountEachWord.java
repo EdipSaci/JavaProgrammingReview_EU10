@@ -1,0 +1,41 @@
+package week07_10_22_2022;
+
+public class T3CountEachWord {
+    public static void main(String[] args) {
+        /*
+        Task 3: Count each name in sentence.
+    input :
+  String names = "Adam Adam Barry Aysun Aysun";
+    output:
+    Adam-2 Barry-1 Aysun-2
+         */
+        String names = "Adam Adam Barry Aysun Hakan";
+        String temp = "";
+        String result = "";
+        for (int i = 0; i < names.length(); i++) {
+            char ch = names.charAt(i);
+
+            if (ch!= ' '){
+                temp+=ch;
+                continue; // we need to find word in order to continue to next statement
+            }
+            String search = temp;
+            int count = 0;
+
+            String dumy = names;
+
+            while (dumy.contains(search)){
+                count++;
+                dumy=dumy.replaceFirst(search,"");
+            }
+
+            if (!result.contains(search))
+            result+=search + "-"+ count+ " ";
+            temp="";
+
+        }
+
+        System.out.println(result);
+
+    }
+}
